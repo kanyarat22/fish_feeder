@@ -12,7 +12,6 @@ char keys[ROWS][COLS] = {
 byte rowPins[ROWS] = {9, 8, 7, 6};
 byte colPins[COLS] = {5, 4, 3, 2};
 Keypad keypad = Keypad( makeKeymap(keys), rowPins, colPins, ROWS, COLS );
-int Kill = 0;
 void setup() {
   Serial.begin(9600);
   myservo.attach(10);
@@ -20,22 +19,31 @@ void setup() {
 void loop() {
   char key = keypad.getKey();
   if (key == '1') {
-    Kill = 1;
     delay(1000);
     myservo.write(180);
     delay(500);
     Serial.println(key);
   }
   if (key == '2') {
-    Kill = 2;
-    delay(3000);
+    delay(5000);
     myservo.write(180);
     delay(500);
     Serial.println(key);
   }
   if (key == '3') {
-    Kill = 3;
-    delay(6000);
+    delay(10000);
+    myservo.write(180);
+    delay(500);
+    Serial.println(key);
+  }
+  if (key == '4') { // ตั้งค่าเวลา 1 ชั่วโมง
+    delay(3600000);
+    myservo.write(180);
+    delay(500);
+    Serial.println(key);
+  }
+  if (key == '5') { // ตั้งค่าเวลาครึ่งชั่วโมง
+    delay(1800000);
     myservo.write(180);
     delay(500);
     Serial.println(key);
